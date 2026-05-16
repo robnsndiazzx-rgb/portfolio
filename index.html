@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robinson Diaz — Shopify Storefront & AI Ad Creative Specialist</title>
+  <style>
+    :root {
+      --bg: #0B0B0B;
+      --surface: #111111;
+      --surface-2: #171717;
+      --text: #F5F5F5;
+      --muted: #BDBDBD;
+      --line: rgba(255,255,255,0.1);
+      --soft: rgba(255,255,255,0.04);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .06;
+      background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
+      background-size: 26px 26px;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 70% 10%, rgba(255,255,255,0.12), transparent 32%),
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08), transparent 30%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; color: inherit; }
+    .loader {
+      position: fixed; inset: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg);
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+    .loader.hide { opacity: 0; visibility: hidden; }
+    .loader p { font-size: 11px; letter-spacing: .6em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+    .loader h1 { margin-top: 20px; text-align:center; font-size: 72px; font-weight: 300; letter-spacing: -.08em; }
+    .progress { position: fixed; left:0; top:0; height: 3px; width:0; background: rgba(255,255,255,.85); z-index: 998; }
+    .nav {
+      position: fixed; left:50%; top:20px; transform: translateX(-50%); z-index: 80;
+      display:flex; gap:4px; align-items:center; padding:8px 12px;
+      border:1px solid var(--line); background: rgba(0,0,0,.35); backdrop-filter: blur(24px);
+      border-radius:999px;
+    }
+    .nav a { padding:10px 14px; border-radius:999px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.55); transition:.35s; }
+    .nav a:hover { color:#fff; background:rgba(255,255,255,.09); }
+    .page { position: relative; z-index: 2; }
+    .hero {
+      min-height:100vh; display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;
+      padding:130px 7vw 80px;
+    }
+    .eyebrow { margin-bottom:20px; font-size:11px; letter-spacing:.48em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+    .hero-title { font-size: clamp(76px, 11vw, 180px); line-height:.75; letter-spacing:-.12em; text-transform:uppercase; font-weight:700; position:relative; }
+    .year { position:absolute; top:8px; right:8%; border:1px solid rgba(255,255,255,.15); border-radius:999px; padding:8px 14px; font-size:11px; letter-spacing:.25em; color:rgba(255,255,255,.55); }
+    .hero h2 { margin-top:38px; font-size: clamp(36px, 4vw, 72px); font-weight:300; letter-spacing:-.06em; }
+    .subtitle { margin-top:12px; font-size:20px; color:rgba(255,255,255,.72); }
+    .desc { margin-top:24px; max-width:650px; color: var(--muted); line-height:1.9; font-size:17px; }
+    .actions { display:flex; flex-wrap:wrap; gap:16px; margin-top:36px; }
+    .btn {
+      position:relative; overflow:hidden; border:none; border-radius:999px; padding:14px 26px;
+      text-transform:uppercase; letter-spacing:.18em; font-size:12px; transition:.35s;
+    }
+    .btn.primary { background:white; color:black; box-shadow:0 0 42px rgba(255,255,255,.18); }
+    .btn.secondary { background:rgba(255,255,255,.03); color:white; border:1px solid rgba(255,255,255,.15); backdrop-filter: blur(18px); }
+    .btn:hover { transform: translateY(-3px); }
+    .portrait-wrap { position:relative; max-width:520px; margin:auto; width:100%; }
+    .portrait-glow { position:absolute; inset:-32px; border-radius:48px; background:rgba(255,255,255,.10); filter: blur(48px); }
+    .portrait {
+      position:relative;
+      aspect-ratio:4/5;
+      overflow:hidden;
+      border-radius:42px;
+      border:1px solid rgba(255,255,255,.15);
+      background:#111;
+      box-shadow:0 30px 80px rgba(0,0,0,.6);
+    }
+    .portrait-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter: grayscale(100%);
+    }
+    .portrait::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 50% 22%, rgba(255,255,255,.35), transparent 18%), linear-gradient(140deg, rgba(255,255,255,.12), transparent 45%); }
+    .portrait-shape { position:absolute; left:14%; right:14%; bottom:0; height:70%; border-radius:45% 45% 0 0; border:1px solid rgba(255,255,255,.15); background:linear-gradient(to bottom, rgba(255,255,255,.18), rgba(0,0,0,.2)); }
+    .portrait-note { position:absolute; left:28px; right:28px; bottom:28px; border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.35); backdrop-filter:blur(18px); border-radius:26px; padding:20px; color:rgba(255,255,255,.75); }
+    section { padding:110px 7vw; }
+    .border-section { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .section-title { font-size: clamp(48px, 6vw, 92px); line-height:.95; letter-spacing:-.07em; font-weight:300; }
+    .about-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; }
+    .body-copy { color:var(--muted); font-size:18px; line-height:1.9; display:grid; gap:24px; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:32px; margin-bottom:48px; }
+    .section-head p { max-width:380px; color:rgba(255,255,255,.45); line-height:1.8; }
+    .services-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:24px; }
+    .service-list { display:grid; gap:12px; }
+    .service-btn {
+      width:100%; display:flex; justify-content:space-between; align-items:center; gap:20px; text-align:left;
+      border:1px solid var(--line); background:rgba(255,255,255,.025); border-radius:28px; padding:20px; transition:.45s;
+    }
+    .service-btn:hover, .service-btn.active { border-color:rgba(255,255,255,.35); background:rgba(255,255,255,.085); box-shadow:0 0 45px rgba(255,255,255,.06); transform: translateY(-2px); }
+    .service-icon { width:48px; height:48px; display:grid; place-items:center; border:1px solid var(--line); border-radius:18px; background:rgba(0,0,0,.28); }
+    .service-kicker { display:block; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.42); margin-bottom:6px; }
+    .service-title { font-size:17px; }
+    .spotlight {
+      position:relative; overflow:hidden; border:1px solid var(--line); background:rgba(255,255,255,.035); backdrop-filter: blur(20px); border-radius:34px;
+    }
+    .showcase { min-height:620px; padding:30px; transition:.45s; }
+    .showcase-visual { position:relative; aspect-ratio:16/9; border-radius:28px; overflow:hidden; border:1px solid var(--line); background:#111; margin-bottom:32px; }
+    .showcase-visual::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 40% 30%, rgba(255,255,255,.22), transparent 24%), linear-gradient(135deg, rgba(255,255,255,.12), transparent 45%); }
+    .visual-label { position:absolute; left:28px; bottom:24px; font-size: clamp(52px, 7vw, 104px); font-weight:700; letter-spacing:-.08em; }
+    .floating-badge { position:absolute; left:28px; top:28px; border:1px solid var(--line); background:rgba(0,0,0,.35); backdrop-filter:blur(20px); border-radius:24px; padding:18px; animation: float 5s ease-in-out infinite; }
+    @keyframes float { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-10px);} }
+    .showcase h3 { font-size: clamp(34px, 4vw, 58px); font-weight:300; letter-spacing:-.05em; }
+    .showcase p { margin-top:18px; max-width:760px; color:var(--muted); line-height:1.85; }
+    .metric-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
+    .metric { border:1px solid var(--line); background:rgba(0,0,0,.2); border-radius:18px; padding:16px; color:rgba(255,255,255,.7); font-size:14px; }
+    .pills { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+    .pill { border:1px solid var(--line); background:rgba(255,255,255,.04); border-radius:999px; padding:9px 14px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.58); }
+    .filters { display:flex; flex-wrap:wrap; gap:12px; margin-top:42px; }
+    .filter-btn { border:1px solid var(--line); background:rgba(255,255,255,.025); border-radius:999px; padding:12px 18px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.55); transition:.3s; }
+    .filter-btn.active, .filter-btn:hover { background:white; color:black; border-color:white; }
+    .work-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .work-card { padding:16px; text-align:left; transition:.4s; }
+    .work-card:hover { transform: translateY(-7px); }
+    .work-image { aspect-ratio:4/3; border-radius:24px; border:1px solid var(--line); overflow:hidden; background: radial-gradient(circle at 50% 20%, rgba(255,255,255,.2), transparent 25%), linear-gradient(135deg, rgba(255,255,255,.12), transparent 52%); display:flex; align-items:end; padding:22px; transition:.5s; }
+    .work-card:hover .work-image { transform: scale(1.015); }
+    .work-card h3 { margin:14px 8px 0; font-size:24px; font-weight:300; letter-spacing:-.04em; }
+    .work-card .cat { margin:20px 8px 0; color:rgba(255,255,255,.36); font-size:11px; text-transform:uppercase; letter-spacing:.28em; }
+    .tools-grid { margin-top:48px; display:grid; grid-template-columns:repeat(5,1fr); gap:18px; }
+    .tool-box { padding:22px; min-height:170px; }
+    .tool-box h3 { color:rgba(255,255,255,.45); font-size:12px; letter-spacing:.24em; text-transform:uppercase; line-height:1.6; }
+    .tool-box .pills .pill { font-size:13px; letter-spacing:0; text-transform:none; transition:.3s; }
+    .tool-box .pill:hover { transform: translateY(-4px); border-color:rgba(255,255,255,.35); color:white; }
+    .contact-card { padding:50px; }
+    .contact-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; }
+    .contact-links { display:grid; align-content:end; gap:12px; }
+    .contact-link { display:flex; justify-content:space-between; align-items:center; gap:20px; border:1px solid var(--line); background:rgba(0,0,0,.2); border-radius:20px; padding:16px; transition:.3s; }
+    .contact-link:hover { border-color:rgba(255,255,255,.35); background:rgba(255,255,255,.06); transform: translateX(4px); }
+    .contact-link small { display:block; color:rgba(255,255,255,.36); text-transform:uppercase; letter-spacing:.24em; font-size:10px; margin-bottom:5px; }
+    .modal { position:fixed; inset:0; z-index:120; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(0,0,0,.72); backdrop-filter:blur(24px); }
+    .modal.show { display:flex; }
+    .modal-card { width:100%; max-width:760px; border:1px solid var(--line); background:#111; border-radius:32px; padding:26px; position:relative; animation: modalIn .35s ease both; }
+    @keyframes modalIn { from { opacity:0; transform: translateY(25px) scale(.97);} to { opacity:1; transform:none;} }
+    .close { position:absolute; right:18px; top:18px; border:1px solid var(--line); border-radius:999px; background:transparent; width:38px; height:38px; }
+    .modal-img { aspect-ratio:16/9; border-radius:24px; border:1px solid var(--line); background: radial-gradient(circle at 50% 20%, rgba(255,255,255,.2), transparent 25%), linear-gradient(135deg, rgba(255,255,255,.12), transparent 52%); }
+    .modal-card h3 { margin-top:18px; font-size:42px; font-weight:300; letter-spacing:-.05em; }
+    .modal-card p { margin-top:14px; color:var(--muted); line-height:1.8; }
+    .reveal { opacity:0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.show { opacity:1; transform:none; }
+    @media (max-width: 980px) {
+      .hero, .about-grid, .services-grid, .contact-grid { grid-template-columns:1fr; }
+      .section-head { display:block; }
+      .section-head p { margin-top:20px; }
+      .work-grid { grid-template-columns:1fr 1fr; }
+      .tools-grid { grid-template-columns:1fr 1fr; }
+      .nav { display:none; }
+    }
+    @media (max-width: 640px) {
+      .hero, section { padding-left:22px; padding-right:22px; }
+      .work-grid, .tools-grid, .metric-grid { grid-template-columns:1fr; }
+      .contact-card { padding:28px; }
+      .hero-title { font-size:86px; }
+      .year { right:0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader"><div><p>Loading Portfolio</p><h1>RD</h1></div></div>
+  <div class="progress" id="progress"></div>
+  <nav class="nav">
+    <a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#tools">Tools</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="page">
+    <section class="hero">
+      <div class="reveal">
+        <p class="eyebrow">Premium eCommerce Operator</p>
+        <div style="position:relative"><h1 class="hero-title">PORT<br>FOLIO</h1><span class="year">2026</span></div>
+        <h2>Robinson Diaz</h2>
+        <p class="subtitle">Shopify Storefront & AI Creative Systems Specialist</p>
+        <p class="desc">I help eCommerce brands build cleaner Shopify storefronts and create AI-powered Ad creatives designed for modern conversion-focused advertising.</p>
+        <div class="actions"><a class="btn primary" href="#work">View Work ↗</a><a class="btn secondary" href="#contact">Contact Me ↗</a></div>
+      </div>
+      <div class="portrait-wrap reveal">
+        <div class="portrait-glow"></div><div class="portrait">
+          <img src="rob1.jpg"
+      alt="Robinson Diaz" class="portrait-img">
+      </div>
+    </section>
+    <section class="border-section reveal" id="about">
+      <p class="eyebrow">About</p>
+      <div class="about-grid"><h2 class="section-title">The System Behind the Store</h2><div class="body-copy"><p>I work at the intersection of Shopify operations, storefront clarity, and AI-powered creative production. My focus is not just making things look good — it is building eCommerce systems that feel organized, premium, and ready to convert.</p><p>From product listing and backend organization to Meta ad creative workflows, I help brands create a cleaner store experience and a more efficient creative pipeline.</p></div></div>
+    </section>
+    <section id="services" class="reveal">
+      <p class="eyebrow">What I Do</p>
+      <div class="section-head"><h2 class="section-title">Interactive Service Showcase</h2><p>Click each system to preview the strategic work behind the storefront, backend, and creative engine.</p></div>
+      <div class="services-grid"><div class="service-list" id="serviceList"></div><div class="spotlight showcase" id="showcase"></div></div>
+    </section>
+    <section class="border-section reveal" id="work">
+      <p class="eyebrow">Work</p><h2 class="section-title">Flexible Work Gallery for Every eCommerce Asset</h2><div class="filters" id="filters"></div><div class="work-grid" id="workGrid"></div>
+    </section>
+    <section id="tools" class="reveal">
+      <p class="eyebrow">Tools</p><h2 class="section-title">The Stack Behind the System</h2><div class="tools-grid" id="toolsGrid"></div>
+    </section>
+    <section id="contact" class="reveal">
+      <div class="spotlight contact-card"><div class="contact-grid"><div><p class="eyebrow">Contact</p><h2 class="section-title">Build the Store. Systemize the Creative.</h2><p class="desc">For Shopify storefront management, product listing support, backend organization, and AI-powered Meta ad creative systems.</p></div><div class="contact-links"><a class="contact-link" href="#"><span><small>Email</small>your.email@example.com</span><span>↗</span></a><a class="contact-link" href="#"><span><small>WhatsApp</small>+63 000 000 0000</span><span>↗</span></a><a class="contact-link" href="#"><span><small>Facebook</small>facebook.com/yourprofile</span><span>↗</span></a><a class="contact-link" href="#"><span><small>LinkedIn</small>linkedin.com/in/yourprofile</span><span>↗</span></a><a class="contact-link" href="#"><span><small>OnlineJobs.ph</small>onlinejobs.ph/profile/yourprofile</span><span>↗</span></a></div></div></div>
+    </section>
+  </div>
+  <div class="modal" id="modal"><div class="modal-card"><button class="close" id="closeModal">×</button><div class="modal-img"></div><p class="eyebrow" id="modalCat" style="margin-top:22px;margin-bottom:0"></p><h3 id="modalTitle"></h3><p id="modalDesc"></p><p style="color:rgba(255,255,255,.42)">Replace this placeholder with your real screenshot, ad creative, Shopify page, listing board, or backend system preview.</p></div></div>
+  <script>
+    const services = [
+      ["Shopify Storefront Management","Storefront Systems","I manage Shopify storefronts with clean structure, conversion-focused page flow, polished product presentation, and organized backend execution.",["Shopify","Google Workspace","Notion","ChatGPT"],["Cleaner store flow","Organized collections","Conversion-ready pages"],"STOREFRONT","⌁"],
+      ["Product Listing & Merchandising","Product Architecture","I build product listings that are easy to understand, properly organized, visually aligned, and ready for fast-moving eCommerce operations.",["Shopify","Canva Pro","ChatGPT","Sheets"],["Variant accuracy","Stronger product clarity","Premium listing layout"],"LISTING","□"],
+      ["AI Ad Creative Production","AI Creative Engine","I create AI-powered Meta ad visuals and creative variations designed for testing, scroll-stopping presentation, and modern paid social campaigns.",["ChatGPT","Claude","Higgsfield","Canva Pro","CapCut"],["Creative angles","Fast variations","Ad-ready assets"],"AI ADS","✦"],
+      ["Meta Creative Strategy","Paid Social Thinking","I support Meta creative direction through visual hooks, messaging angles, product-focused creatives, and clean creative testing systems.",["Meta Ads Manager","ChatGPT","Canva Pro"],["Hook-first concepts","Testing structure","Conversion intent"],"META","◐"],
+      ["Backend Operations","Operational Clarity","I help keep backend tasks organized: product data, collections, naming systems, basic workflows, assets, and execution checklists.",["Shopify","Notion","Google Workspace","Slack"],["Cleaner backend","Repeatable workflow","Reduced chaos"],"BACKEND","⚙"],
+      ["AI Workflow Systems","Creative Operations","I design practical AI-assisted workflows for ad creative production, product descriptions, listing support, and eCommerce execution.",["ChatGPT","Claude","Notion","Higgsfield"],["Faster output","Consistent assets","Scalable process"],"SYSTEMS","◇"]
+    ];
+    const works = [
+      ["Luxury Fashion Product Page","Shopify Storefronts","Storefront","A conversion-focused product page structure for fashion dropshipping products with premium hierarchy and clean merchandising."],
+      ["Variant-Rich Product Listing","Product Listings","Listing","Organized product listing framework with variants, titles, descriptions, product images, and clean backend naming logic."],
+      ["AI Fashion Ad Creative Set","AI Ad Creatives","AI Creative","AI-assisted image ad concepts for Meta campaigns with modern visual hooks and premium fashion positioning."],
+      ["Meta Ad Testing Board","Meta Ads","Strategy","Creative testing structure for hooks, angles, offers, and product-focused ad iterations."],
+      ["Collection Merchandising Layout","Merchandising","Merchandising","Clean category and collection layout concept designed to improve browsing clarity and product discovery."],
+      ["AI Creative Workflow System","Creative Systems","System","A repeatable AI creative workflow for producing ad concepts, image directions, copy, and visual variations faster."]
+    ];
+    const categories = ["All Works","Shopify Storefronts","Product Listings","AI Ad Creatives","Meta Ads","Merchandising","Creative Systems"];
+    const tools = [["Shopify & eCommerce",["Shopify","Meta Ads Manager"]],["AI Systems",["ChatGPT","Claude","Higgsfield"]],["Creative Tools",["Canva Pro","CapCut"]],["Productivity",["Notion","Google Workspace"]],["Communication",["Slack"]]];
+    let activeService = 0, activeCategory = "All Works";
+    const serviceList = document.getElementById('serviceList'), showcase = document.getElementById('showcase'), filters = document.getElementById('filters'), workGrid = document.getElementById('workGrid'), toolsGrid = document.getElementById('toolsGrid');
+    function renderServices(){ serviceList.innerHTML = services.map((s,i)=>`<button class="service-btn ${i===activeService?'active':''}" onclick="activeService=${i};renderServices();renderShowcase();"><span style="display:flex;gap:16px;align-items:center"><span class="service-icon">${s[6]}</span><span><span class="service-kicker">${s[1]}</span><span class="service-title">${s[0]}</span></span></span><span>↗</span></button>`).join(''); }
+    function renderShowcase(){ const s=services[activeService]; showcase.innerHTML = `<div class="showcase-visual"><div class="floating-badge"><div style="font-size:24px">${s[6]}</div><p class="service-kicker" style="margin-top:14px">${s[1]}</p></div><h3 class="visual-label">${s[5]}</h3></div><h3>${s[0]}</h3><p>${s[2]}</p><div class="metric-grid">${s[4].map(m=>`<div class="metric">${m}</div>`).join('')}</div><div class="pills">${s[3].map(t=>`<span class="pill">${t}</span>`).join('')}</div>`; }
+    function renderFilters(){ filters.innerHTML = categories.map(c=>`<button class="filter-btn ${c===activeCategory?'active':''}" onclick="activeCategory='${c}';renderFilters();renderWorks();">${c}</button>`).join(''); }
+    function renderWorks(){ const list = activeCategory==='All Works'?works:works.filter(w=>w[1]===activeCategory); workGrid.innerHTML = list.map((w,i)=>`<button class="spotlight work-card" onclick="openModal(${works.indexOf(w)})"><div class="work-image"><span class="pill">${w[2]}</span></div><p class="cat">${w[1]}</p><h3>${w[0]}</h3></button>`).join(''); }
+    function renderTools(){ toolsGrid.innerHTML = tools.map(g=>`<div class="spotlight tool-box"><h3>${g[0]}</h3><div class="pills">${g[1].map(t=>`<span class="pill">${t}</span>`).join('')}</div></div>`).join(''); }
+    function openModal(i){ const w=works[i]; document.getElementById('modalCat').textContent=w[1]; document.getElementById('modalTitle').textContent=w[0]; document.getElementById('modalDesc').textContent=w[3]; document.getElementById('modal').classList.add('show'); }
+    document.getElementById('closeModal').onclick=()=>document.getElementById('modal').classList.remove('show');
+    document.getElementById('modal').onclick=e=>{ if(e.target.id==='modal') e.currentTarget.classList.remove('show'); };
+    function reveal(){ document.querySelectorAll('.reveal').forEach(el=>{ if(el.getBoundingClientRect().top < innerHeight*.85) el.classList.add('show'); }); }
+    addEventListener('scroll',()=>{ const h=document.documentElement.scrollHeight-innerHeight; document.getElementById('progress').style.width=(scrollY/h*100)+'%'; reveal(); });
+    addEventListener('load',()=>{ setTimeout(()=>document.getElementById('loader').classList.add('hide'),850); reveal(); renderServices(); renderShowcase(); renderFilters(); renderWorks(); renderTools(); });
+  </script>
+</body>
+</html>
