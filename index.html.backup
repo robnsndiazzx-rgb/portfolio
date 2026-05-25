@@ -60,7 +60,7 @@
       border:1px solid var(--line); background: rgba(0,0,0,.35); backdrop-filter: blur(24px);
       border-radius:999px;
     }
-    .nav a { padding:10px 14px; border-radius:999px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.55); transition:.45s; }
+    .nav a { padding:10px 14px; border-radius:999px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.55); transition:.35s; }
     .nav a:hover { color:#fff; background:rgba(255,255,255,.09); }
     .page { position: relative; z-index: 2; }
     .hero {
@@ -76,7 +76,7 @@
     .actions { display:flex; flex-wrap:wrap; gap:16px; margin-top:36px; }
     .btn {
       position:relative; overflow:hidden; border:none; border-radius:999px; padding:14px 26px;
-      text-transform:uppercase; letter-spacing:.18em; font-size:12px; transition:.45s;
+      text-transform:uppercase; letter-spacing:.18em; font-size:12px; transition:.35s;
     }
     .btn.primary { background:white; color:black; box-shadow:0 0 42px rgba(255,255,255,.18); }
     .btn.secondary { background:rgba(255,255,255,.03); color:white; border:1px solid rgba(255,255,255,.15); backdrop-filter: blur(18px); }
@@ -125,9 +125,6 @@
     .showcase { min-height:620px; padding:30px; transition:.45s; }
     .showcase-visual { position:relative; aspect-ratio:16/9; border-radius:28px; overflow:hidden; border:1px solid var(--line); background:#111; margin-bottom:32px; }
     .showcase-visual::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 40% 30%, rgba(255,255,255,.22), transparent 24%), linear-gradient(135deg, rgba(255,255,255,.12), transparent 45%); }
-    /* Video player styling */
-    .showcase-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:28px; }
-    .video-overlay-label { position:absolute; top:28px; left:28px; background:rgba(0,0,0,.6); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:14px 24px; font-size:14px; font-weight:600; letter-spacing:0.05em; z-index:10; color:rgba(255,255,255,.9); }
     .visual-label { position:absolute; left:28px; bottom:24px; font-size: clamp(52px, 7vw, 104px); font-weight:700; letter-spacing:-.08em; }
     .floating-badge { position:absolute; left:28px; top:28px; border:1px solid var(--line); background:rgba(0,0,0,.35); backdrop-filter:blur(20px); border-radius:24px; padding:18px; animation: float 5s ease-in-out infinite; }
     @keyframes float { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-10px);} }
@@ -172,35 +169,19 @@
     .tool-box h3 { color:rgba(255,255,255,.45); font-size:12px; letter-spacing:.24em; text-transform:uppercase; line-height:1.6; }
     .tool-box .pills .pill { font-size:13px; letter-spacing:0; text-transform:none; transition:.3s; }
     .tool-box .pill:hover { transform: translateY(-4px); border-color:rgba(255,255,255,.35); color:white; }
-    /* WORKFLOW SECTION - How We Work Together */
-    .workflow-grid { margin-top:48px; display:grid; grid-template-columns:repeat(5,1fr); gap:24px; }
-    .workflow-step { padding:28px; border:1px solid var(--line); border-radius:20px; background:rgba(0,0,0,.2); transition:.3s ease; }
-    .workflow-step:hover { border-color:rgba(255,255,255,.25); background:rgba(255,255,255,.06); }
-    .step-number { font-size:48px; font-weight:700; color:rgba(255,255,255,.15); margin-bottom:16px; line-height:1; }
-    .step-title { font-size:18px; font-weight:600; margin-bottom:12px; color:rgba(255,255,255,.95); }
-    .step-desc { font-size:14px; line-height:1.6; color:rgba(255,255,255,.65); }
     .contact-card { padding:50px; }
     .contact-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:60px; }
     .contact-links { display:grid; align-content:end; gap:12px; }
     .contact-link { display:flex; justify-content:space-between; align-items:center; gap:20px; border:1px solid var(--line); background:rgba(0,0,0,.2); border-radius:20px; padding:16px; transition:.3s; }
     .contact-link:hover { border-color:rgba(255,255,255,.35); background:rgba(255,255,255,.06); transform: translateX(4px); }
     .contact-link small { display:block; color:rgba(255,255,255,.36); text-transform:uppercase; letter-spacing:.24em; font-size:10px; margin-bottom:5px; }
-    /* PRIMARY CTA STYLING - Email is the main action */
-    .contact-link.primary-cta { border:2px solid rgba(255,255,255,.25); background:rgba(255,255,255,.08); }
-    .contact-link.primary-cta:hover { border-color:rgba(255,255,255,.45); background:rgba(255,255,255,.12); transform: translateX(6px); }
-    .contact-link.primary-cta small { color:rgba(255,255,255,.5); }
-    /* SECONDARY LINK STYLING */
-    .contact-link.secondary { opacity:0.75; }
-    .contact-link.secondary:hover { opacity:1; }
-    /* AVAILABILITY TEXT */
-    .availability { font-size:13px; color:rgba(255,255,255,.45); text-align:right; margin-top:8px; font-style:italic; }
     .modal { position:fixed; inset:0; z-index:120; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(0,0,0,.72); backdrop-filter:blur(24px); }
     .modal.show { display:flex; }
-    .modal-card { width:100%; max-width:1000px; border:1px solid var(--line); background:#111; border-radius:32px; padding:26px; position:relative; animation: modalIn .45s ease both; max-height:90vh; overflow-y:auto; }
+    .modal-card { width:100%; max-width:1000px; border:1px solid var(--line); background:#111; border-radius:32px; padding:26px; position:relative; animation: modalIn .35s ease both; max-height:90vh; overflow-y:auto; }
     .modal-back { position:absolute; left:18px; top:18px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.05); width:38px; height:38px; display:grid; place-items:center; opacity:0.9; cursor:pointer; transition:.25s ease; }
     .modal-back:hover { background:rgba(255,255,255,.12); }
     .product-gallery-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:24px; }
-    .product-gallery-card { display:flex; flex-direction:column; border:1px solid rgba(255,255,255,.12); border-radius:26px; overflow:hidden; background:rgba(255,255,255,.02); cursor:pointer; transition:.45s; text-align:left; }
+    .product-gallery-card { display:flex; flex-direction:column; border:1px solid rgba(255,255,255,.12); border-radius:26px; overflow:hidden; background:rgba(255,255,255,.02); cursor:pointer; transition:.35s; text-align:left; }
     .product-gallery-card:hover { transform: translateY(-4px); border-color:rgba(255,255,255,.25); }
     .product-gallery-cover { width:100%; aspect-ratio:4/3; overflow:hidden; background:#111; }
     /* Recommended image ratio: 4:3 */
@@ -226,26 +207,23 @@
     }
     .modal-gallery { 
       display:flex; 
-      flex-wrap:wrap;
       gap:20px; 
       width:200%; 
       height:400px; 
-      overflow-x:auto;
-      overflow-y:hidden;
-      scroll-behavior:smooth;
+      overflow:hidden; 
       padding:20px; 
       /* AUTO-SCROLL SPEED SETTINGS */
-      animation: scrollBoard 15s linear infinite; 
+      animation: scrollBoard 45s linear infinite; 
       /* To pause animation on hover, see JS: pauseGalleryScroll() function */
     }
     .modal-gallery.paused {
       animation-play-state: paused;
     }
-    /* GALLERY IMAGE CARDS - 2x2 grid layout */
+    /* GALLERY IMAGE CARDS - Medium-sized portfolio board cards */
     .modal-slide { 
       flex:0 0 240px; 
       width:240px; 
-      height:200px; 
+      height:100%; 
       overflow:hidden; 
       border-radius:16px; 
       border:1px solid rgba(255,255,255,.12); 
@@ -320,12 +298,11 @@
       .section-head p { margin-top:20px; }
       .work-grid { grid-template-columns:1fr 1fr; }
       .tools-grid { grid-template-columns:1fr 1fr; }
-      .workflow-grid { grid-template-columns:1fr 1fr; }
       .nav { display:none; }
     }
     @media (max-width: 640px) {
       .hero, section { padding-left:22px; padding-right:22px; }
-      .work-grid, .tools-grid, .workflow-grid, .metric-grid { grid-template-columns:1fr; }
+      .work-grid, .tools-grid, .metric-grid { grid-template-columns:1fr; }
       .contact-card { padding:28px; }
       .hero-title { font-size:86px; }
       .year { right:0; }
@@ -344,8 +321,8 @@
         <p class="eyebrow">Premium eCommerce Operator</p>
         <div style="position:relative"><h1 class="hero-title">PORT<br>FOLIO</h1><span class="year">2026</span></div>
         <h2>Robinson Diaz</h2>
-        <p class="subtitle">eCommerce VA for Product Listing & Ad Creatives</p>
-        <p class="desc">I help online stores improve how their products are presented to increase engagement and conversions. I handle the content and creative side of your store so you can focus on scaling your business.</p>
+        <p class="subtitle">Shopify Storefront & AI Creative Systems Specialist</p>
+        <p class="desc">I help eCommerce brands build cleaner Shopify storefronts and create AI-powered Ad creatives designed for modern conversion-focused advertising.</p>
         <div class="actions"><a class="btn primary" href="#work">View Work ↗</a><a class="btn secondary" href="#contact">Contact Me ↗</a></div>
       </div>
       <div class="portrait-wrap reveal">
@@ -357,11 +334,11 @@
     </section>
     <section class="border-section reveal" id="about">
       <p class="eyebrow">About</p>
-      <div class="about-grid"><h2 class="section-title">The support system behind your eCommerce store</h2><div class="body-copy"><p>I handle product listing, ad creatives, and basic store support for eCommerce businesses, with hands-on experience working on a Shopify store. I’ve created product listings and designed ad creatives using a mix of creativity and AI tools to produce engaging, scroll-stopping content. I chose eCommerce because I enjoy the process of turning products into compelling offers that attract customers. I work best with small to growing online stores that need consistent support in managing and promoting their products.</p></div></div>
+      <div class="about-grid"><h2 class="section-title">The System Behind the Store</h2><div class="body-copy"><p>I work at the intersection of Shopify operations, storefront clarity, and AI-powered creative production. My focus is not just making things look good — it is building eCommerce systems that feel organized, premium, and ready to convert.</p><p>From product listing and backend organization to Meta ad creative workflows, I help brands create a cleaner store experience and a more efficient creative pipeline.</p></div></div>
     </section>
     <section id="services" class="reveal">
       <p class="eyebrow">What I Do</p>
-      <div class="section-head"><h2 class="section-title">How I Can Support Your Store</h2><p>Click each service to see what I do, the tools I use, and who it's best for.</p></div>
+      <div class="section-head"><h2 class="section-title">Interactive Service Showcase</h2><p>Click each system to preview the strategic work behind the storefront, backend, and creative engine.</p></div>
       <div class="services-grid"><div class="service-list" id="serviceList"></div><div class="spotlight showcase" id="showcase"></div></div>
     </section>
     <section class="border-section reveal" id="work">
@@ -370,39 +347,8 @@
     <section id="tools" class="reveal">
       <p class="eyebrow">Tools</p><h2 class="section-title">The Stack Behind the System</h2><div class="tools-grid" id="toolsGrid"></div>
     </section>
-    <section id="workflow" class="reveal">
-      <p class="eyebrow">Process</p>
-      <h2 class="section-title">How We Work Together</h2>
-      <div class="workflow-grid">
-        <div class="workflow-step">
-          <div class="step-number">1</div>
-          <h3 class="step-title">Discovery</h3>
-          <p class="step-desc">We discuss your store, goals, and support needs to confirm I'm the right fit.</p>
-        </div>
-        <div class="workflow-step">
-          <div class="step-number">2</div>
-          <h3 class="step-title">Scope & Agreement</h3>
-          <p class="step-desc">I outline tasks, timelines, and expectations before starting any work.</p>
-        </div>
-        <div class="workflow-step">
-          <div class="step-number">3</div>
-          <h3 class="step-title">Onboarding</h3>
-          <p class="step-desc">You provide store access and we align on tools, communication, and workflow.</p>
-        </div>
-        <div class="workflow-step">
-          <div class="step-number">4</div>
-          <h3 class="step-title">Execution</h3>
-          <p class="step-desc">I begin work on listings, creatives, or store tasks with regular updates.</p>
-        </div>
-        <div class="workflow-step">
-          <div class="step-number">5</div>
-          <h3 class="step-title">Review & Improve</h3>
-          <p class="step-desc">You review the work and I make adjustments to meet your expectations.</p>
-        </div>
-      </div>
-    </section>
     <section id="contact" class="reveal">
-      <div class="spotlight contact-card"><div class="contact-grid"><div><p class="eyebrow">Contact</p><h2 class="section-title">Let's improve your store and creatives</h2><p class="desc">Product listings, ad creatives, and store support to help your products stand out and perform better.</p></div><div class="contact-links"><a class="contact-link primary-cta" href="mailto:robnsndiazzx@gmail.com"><span><small>Send me an email</small>robnsndiazzx@gmail.com</span><span>↗</span></a><a class="contact-link secondary" href="https://wa.me/639309694613"><span><small>WhatsApp</small>+63 930 969 4613</span><span>↗</span></a><p class="availability">Available Monday–Saturday (PHT)</p></div></div></div>
+      <div class="spotlight contact-card"><div class="contact-grid"><div><p class="eyebrow">Contact</p><h2 class="section-title">Build the Store. Systemize the Creative.</h2><p class="desc">For Shopify product listing support, backend organization, and AI-powered Meta ad creative systems.</p></div><div class="contact-links"><a class="contact-link" href="#"><span><small>Email</small>robnsndiazzx@gmail.com</span><span>↗</span></a><a class="contact-link" href="#"><span><small>WhatsApp</small>+63 930 969 4613</span><span>↗</span></a><a class="contact-link" href="#"><span><small>OnlineJobs.ph</small>https://www.onlinejobs.ph/jobseekers/info/4890493</span><span>↗</span></a></div></div></div>
     </section>
   </div>
   <!-- LIGHTBOX PREVIEW for enlarged image viewing -->
@@ -432,23 +378,11 @@
     </div>
   </div>
   <script>
-    /* SERVICES ARRAY - Add your local video files to the folder and reference them below */
-    /* VIDEO FILE PATHS: Place your demo videos in the same folder as index.html */
-    /* Step 1: Save your video files with these exact names:
-       - demo-listing.mp4 (for Product Listing service)
-       - demo-creative.mp4 (for Ad Creative service)
-       - demo-support.mp4 (for Store Support service)
-       Step 2: Update the video paths below if you use different names
-    */
     const services = [
-      /* Service 1: Product Listing - UPDATE VIDEO PATH HERE */
-      ["Product Listing & Optimization","Shopify Listings","Create and organize product listings with clear descriptions, structured details, clean formatting, and proper variants. Every listing is set up for clarity and conversion.",["Shopify","Google Docs","Excel"],["Best for: Stores that need professional, well-organized product pages"],"LISTING","□","demo-listing.mp4"],
-      /* Service 2: Ad Creative - UPDATE VIDEO PATH HERE */
-      ["Ad Creative Design","Visual Ads","Design engaging ad creatives that highlight products and capture attention on social media. I combine visual design with AI tools to create ads that stop the scroll.",["Canva Pro","CapCut","Claude","AI Tools"],["Best for: Brands running ads that need better visuals and more creative variations"],"CREATIVE","✦","demo-creative.mp4"],
-      /* Service 3: Store Support - UPDATE VIDEO PATH HERE */
-      ["Shopify Store Support","Store Management","Assist with product uploads, updates, backend management, and day-to-day store tasks. Reliable support so you can focus on growing your business.",["Shopify"],["Best for: Busy store owners who need consistent hands-on support"],"SUPPORT","◐","demo-support.mp4"]
+      ["Product Listing & Merchandising","Product Architecture","I build product listings that are easy to understand, properly organized, visually aligned, and ready for fast-moving eCommerce operations.",["Shopify","Canva Pro","ChatGPT","Sheets"],["Variant accuracy","Stronger product clarity","Premium listing layout"],"LISTING","□"],
+      ["AI Ad Creative Production","AI Creative Engine","I create AI-powered Meta ad visuals and creative variations designed for testing, scroll-stopping presentation, and modern paid social campaigns.",["ChatGPT","Claude","Higgsfield","Canva Pro","CapCut"],["Creative angles","Fast variations","Ad-ready assets"],"AI ADS","✦"],
+      ["Meta Creative Strategy","Paid Social Thinking","I support Meta creative direction through visual hooks, messaging angles, product-focused creatives, and clean creative testing systems.",["Meta Ads Manager","ChatGPT","Canva Pro"],["Hook-first concepts","Testing structure","Conversion intent"],"META","◐"]
     ];
-    /* END VIDEO PATHS - All video references are above */
     // Work cards: [title, category, label, description, coverImage, galleryImages]
     // Add new project cards below with the same 6-item structure.
     const works = [
@@ -459,18 +393,18 @@
     // ADD OR EDIT PROJECT GALLERIES HERE
     // ADD NEW PROJECT GALLERY HERE
     // To add another project gallery, follow this structure:
-    // "Category Name": [ { title: "Gallery Name", description: "...", cover: "image.png", images: ["img1.png", "img2.png", ...] }, ... ]
+    // \"Category Name\": [ { title: \"Gallery Name\", description: \"...\", cover: \"image.png\", images: [\"img1.png\", \"img2.png\", ...] }, ... ]
     const workGalleries = {
-      "Product Listings": [
+      \"Product Listings\": [
         {
-          title: "NOCTRA Studio Product Listing",
-          description: "Shopify product listing gallery showing product page setup, backend organization, product media, variants, and merchandising details.",
-          cover: "productlisting.png",
+          title: \"NOCTRA Studio Product Listing\",
+          description: \"Shopify product listing gallery showing product page setup, backend organization, product media, variants, and merchandising details.\",
+          cover: \"productlisting.png\",
           // ADD NEW OUTPUT IMAGE HERE - Product Listings Gallery
           // To add another image to this gallery, add a new image path below:
-          images: ["5.jpg","1.jpg","2.jpg","3.jpg","6.jpg"],
+          images: [\"5.jpg\",\"1.jpg\",\"2.jpg\",\"3.jpg\",\"6.jpg\"]
           // ADD NEW OUTPUT IMAGE HERE
-          // "images/product-listing-new.jpg",
+          // \"images/product-listing-new.jpg\",
         },
         {
           title: "N/A",
@@ -492,11 +426,7 @@
           title: "Ad creative gallery",
           description: "AI ad creative gallery showing campaign visuals, creative hooks, and creative testing assets.",
           cover: "adcreative.png",
-          // ADD NEW OUTPUT IMAGE HERE - AI Ad Creatives Gallery
-          // To add another image to this gallery, add a new image path below:
-          images: ["native.png","native.png","native.png","native.png"],
-          // ADD NEW OUTPUT IMAGE HERE
-          // "images/ai-creative-new.png",
+          images: ["native.png","native.png","native.png","native.png"]
         },
         {
           title: "N/A",
@@ -518,11 +448,7 @@
           title: "Meta Ads Creatives Gallery",
           description: "Meta Ads gallery showing ad sets, campaign messaging, and conversion-ready preview screens.",
           cover: "metacover.png",
-          // ADD NEW OUTPUT IMAGE HERE - Meta Ads Gallery
-          // To add another image to this gallery, add a new image path below:
-          images: ["native1.png","native2.png","native3.png","native4.png","native5.png"],
-          // ADD NEW OUTPUT IMAGE HERE
-          // "images/meta-ad-new.png",
+          images: ["native1.png","native2.png","native3.png","native4.png","native5.png"]
         },
         {
           title: "N/A",
@@ -543,57 +469,36 @@
     const categories = ["All Works","Product Listings","AI Ad Creatives","Meta Ads"];
     const tools = [["Shopify & eCommerce",["Shopify","Meta Ads Manager"]],["AI Systems",["ChatGPT","Claude","Higgsfield"]],["Creative Tools",["Canva Pro","CapCut"]],["Productivity",["Notion","Google Workspace"]],["Communication",["Slack"]]];
     let activeService = 0, activeCategory = "All Works";
+    let currentModalSlide = 0;
     const serviceList = document.getElementById('serviceList'), showcase = document.getElementById('showcase'), filters = document.getElementById('filters'), workGrid = document.getElementById('workGrid'), toolsGrid = document.getElementById('toolsGrid');
     const modalBack = document.getElementById('modalBack');
     const modalInner = document.getElementById('modalInner');
-    const modalImgContainer = document.getElementById('modalImgContainer');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxClose = document.getElementById('lightboxClose');
-    let currentModalCategory = '';
-    let isGalleryPaused = false;
+    const modalImg = document.querySelector('.modal-img');
+    const modalIndicators = document.getElementById('modalIndicators');
+    document.getElementById('modalGallery')?.addEventListener('scroll', syncModalSlideFromScroll);
     function renderServices(){ serviceList.innerHTML = services.map((s,i)=>`<button class="service-btn ${i===activeService?'active':''}" onclick="activeService=${i};renderServices();renderShowcase();"><span style="display:flex;gap:16px;align-items:center"><span class="service-icon">${s[6]}</span><span><span class="service-kicker">${s[1]}</span><span class="service-title">${s[0]}</span></span></span><span>↗</span></button>`).join(''); }
-    function renderShowcase(){ const s=services[activeService]; const videoLabel=s[5].replace('LISTING','Product Listing Demo').replace('CREATIVE','Ad Creative Showcase').replace('SUPPORT','Backend Workflow'); showcase.innerHTML = `<div class="showcase-visual"><video class="showcase-video" autoplay muted loop playsinline><source src="${s[8]}" type="video/mp4"><img src="${s[1]}" alt="${s[0]}"></video><div class="video-overlay-label">${videoLabel}</div></div><h3>${s[0]}</h3><p>${s[2]}</p><div class="metric-grid">${s[4].map(m=>`<div class="metric">${m}</div>`).join('')}</div><div class="pills">${s[3].map(t=>`<span class="pill">${t}</span>`).join('')}</div>`; }
+    function renderShowcase(){ const s=services[activeService]; showcase.innerHTML = `<div class="showcase-visual"><div class="floating-badge"><div style="font-size:24px">${s[6]}</div><p class="service-kicker" style="margin-top:14px">${s[1]}</p></div><h3 class="visual-label">${s[5]}</h3></div><h3>${s[0]}</h3><p>${s[2]}</p><div class="metric-grid">${s[4].map(m=>`<div class="metric">${m}</div>`).join('')}</div><div class="pills">${s[3].map(t=>`<span class="pill">${t}</span>`).join('')}</div>`; }
     function renderFilters(){ filters.innerHTML = categories.map(c=>`<button class="filter-btn ${c===activeCategory?'active':''}" onclick="activeCategory='${c}';renderFilters();renderWorks();">${c}</button>`).join(''); }
     function renderWorks(){ const list = activeCategory==='All Works'?works:works.filter(w=>w[1]===activeCategory); workGrid.innerHTML = list.map((w,i)=>`<button class="spotlight work-card" onclick="openModal(${works.indexOf(w)})"><div class="work-image"><img src="${w[4]}" alt="${w[0]}" class="gallery-img"><span class="pill">${w[2]}</span></div><p class="cat">${w[1]}</p><h3>${w[0]}</h3></button>`).join(''); }
     function renderTools(){ toolsGrid.innerHTML = tools.map(g=>`<div class="spotlight tool-box"><h3>${g[0]}</h3><div class="pills">${g[1].map(t=>`<span class="pill">${t}</span>`).join('')}</div></div>`).join(''); }
-    /* LIGHTBOX PREVIEW SETTINGS */
-    lightboxClose.onclick = () => lightbox.classList.remove('show');
-    lightbox.onclick = (e) => { if(e.target.id === 'lightbox') lightbox.classList.remove('show'); };
-    function showLightbox(imageSrc) {
-      lightboxImage.src = imageSrc;
-      lightbox.classList.add('show');
-      pauseGalleryScroll();
-    }
-    /* AUTO-SCROLL SPEED SETTINGS */
-    /* Change animation duration in CSS @keyframes scrollBoard for speed adjustment */
-    function pauseGalleryScroll() {
-      const gallery = document.getElementById('modalGallery');
-      if (gallery) {
-        gallery.classList.add('paused');
-        isGalleryPaused = true;
-      }
-    }
-    function resumeGalleryScroll() {
-      const gallery = document.getElementById('modalGallery');
-      if (gallery) {
-        gallery.classList.remove('paused');
-        isGalleryPaused = false;
-      }
-    }
-    function setupGalleryHoverPause() {
-      const gallery = document.getElementById('modalGallery');
-      if (!gallery) return;
-      gallery.addEventListener('mouseenter', pauseGalleryScroll);
-      gallery.addEventListener('mouseleave', resumeGalleryScroll);
-    }
+    let currentModalCategory = '';
     modalBack.onclick = () => renderGallerySelection(currentModalCategory);
+    function setModalView(view) {
+      if (view === 'gallery') {
+        modalImg.style.display = 'block';
+        modalIndicators.style.display = 'flex';
+        modalInner.style.display = 'none';
+      } else {
+        modalImg.style.display = 'none';
+        modalIndicators.style.display = 'none';
+        modalInner.style.display = 'grid';
+      }
+    }
     function renderGallerySelection(category) {
       const galleries = workGalleries[category] || [];
       currentModalCategory = category;
+      setModalView('selection');
       modalBack.style.display = 'none';
-      modalImgContainer.style.display = 'none';
-      modalInner.style.display = 'grid';
       document.getElementById('modalCat').textContent = category;
       document.getElementById('modalTitle').textContent = category;
       document.getElementById('modalDesc').textContent = `Select a ${category.toLowerCase()} project gallery to preview images, assets, and screenshots.`;
@@ -608,20 +513,48 @@
       document.getElementById('modalTitle').textContent = gallery.title;
       document.getElementById('modalDesc').textContent = gallery.description;
       if (!gallery.images.length) {
-        modalImgContainer.style.display = 'none';
-        modalInner.style.display = 'grid';
+        setModalView('selection');
         modalInner.innerHTML = `<div class="modal-empty-state"><h4>This gallery will be added soon.</h4><p>Check back later for another ${currentModalCategory.toLowerCase()} gallery with real screenshot detail and project structure.</p></div>`;
+        modalIndicators.innerHTML = '';
+        modalImg.style.display = 'none';
         return;
       }
-      /* Show auto-scrolling gallery board */
-      modalImgContainer.style.display = 'block';
-      modalInner.style.display = 'none';
+      setModalView('gallery');
       const modalGallery = document.getElementById('modalGallery');
-      /* Create duplicate images for seamless loop effect */
-      const doubledImages = [...gallery.images, ...gallery.images];
-      modalGallery.innerHTML = doubledImages.map(img => `<div class="modal-slide" onclick="showLightbox('${img}')"><img src="${img}" alt="${gallery.title}" class="modal-real-img"></div>`).join('');
-      resumeGalleryScroll();
-      setupGalleryHoverPause();
+      currentModalSlide = 0;
+      modalGallery.innerHTML = gallery.images.map(img => `<div class="modal-slide"><img src="${img}" alt="${gallery.title}" class="modal-real-img"></div>`).join('');
+      updateModalButtons();
+      scrollModalTo(0);
+    }
+    function updateModalButtons() {
+      const gallery = document.getElementById('modalGallery');
+      const prev = document.getElementById('modalPrev');
+      const next = document.getElementById('modalNext');
+      const count = gallery?.children.length || 0;
+      if (!gallery) return;
+      prev.style.display = next.style.display = count > 1 ? 'grid' : 'none';
+      renderModalIndicators(count);
+    }
+    function renderModalIndicators(count) {
+      const indicators = document.getElementById('modalIndicators');
+      if (!indicators) return;
+      indicators.innerHTML = Array.from({ length: count }, (_, index) => `<span class="${index === currentModalSlide ? 'active' : ''}"></span>`).join('');
+    }
+    function syncModalSlideFromScroll() {
+      const gallery = document.getElementById('modalGallery');
+      if (!gallery || !gallery.children.length) return;
+      const slideIndex = Math.round(gallery.scrollLeft / gallery.clientWidth);
+      if (slideIndex !== currentModalSlide) {
+        currentModalSlide = slideIndex;
+        renderModalIndicators(gallery.children.length);
+      }
+    }
+    function scrollModalTo(index) {
+      const gallery = document.getElementById('modalGallery');
+      if (!gallery || !gallery.children[index]) return;
+      currentModalSlide = index;
+      gallery.scrollTo({ left: gallery.children[index].offsetLeft, behavior: 'smooth' });
+      updateModalButtons();
     }
     function openModal(i){
       const w = works[i];
@@ -631,17 +564,26 @@
       modalBack.style.display = 'none';
       modalInner.innerHTML = '';
       document.getElementById('modal').classList.add('show');
-      /* Check if category has galleries */
       if (workGalleries[w[1]]) {
         renderGallerySelection(w[1]);
         return;
       }
-      /* Fallback to simple gallery view */
-      modalImgContainer.style.display = 'block';
-      modalInner.style.display = 'none';
+      setModalView('gallery');
+      const modalImages = Array.isArray(w[5]) && w[5].length ? w[5] : [w[4]];
+      const gallery = document.getElementById('modalGallery');
+      currentModalSlide = 0;
+      gallery.innerHTML = modalImages.map(img => `<div class="modal-slide"><img src="${img}" alt="${w[0]}" class="modal-real-img"></div>`).join('');
+      updateModalButtons();
+      scrollModalTo(0);
     }
+    document.getElementById('modalPrev').onclick = () => scrollModalTo(Math.max(0, currentModalSlide - 1));
+    document.getElementById('modalNext').onclick = () => {
+      const gallery = document.getElementById('modalGallery');
+      scrollModalTo(Math.min((gallery?.children.length || 1) - 1, currentModalSlide + 1));
+    };
     document.getElementById('closeModal').onclick = () => document.getElementById('modal').classList.remove('show');
-    document.getElementById('modal').onclick = (e) => { if(e.target.id === 'modal') e.currentTarget.classList.remove('show'); };
+    document.getElementById('closeModal').onclick=()=>document.getElementById('modal').classList.remove('show');
+    document.getElementById('modal').onclick=e=>{ if(e.target.id==='modal') e.currentTarget.classList.remove('show'); };
     function reveal(){ document.querySelectorAll('.reveal').forEach(el=>{ if(el.getBoundingClientRect().top < innerHeight*.85) el.classList.add('show'); }); }
     addEventListener('scroll',()=>{ const h=document.documentElement.scrollHeight-innerHeight; document.getElementById('progress').style.width=(scrollY/h*100)+'%'; reveal(); });
     addEventListener('load',()=>{ setTimeout(()=>document.getElementById('loader').classList.add('hide'),850); reveal(); renderServices(); renderShowcase(); renderFilters(); renderWorks(); renderTools(); });
